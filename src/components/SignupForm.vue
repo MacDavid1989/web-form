@@ -1,40 +1,32 @@
 <template>
-  <form action="">
-    <label for="">Email:</label>
+  <form>
+    <label>Email:</label>
     <input type="email" required v-model="email" />
 
-    <label for="">Password:</label>
+    <label>Password:</label>
     <input type="password" required v-model="password" />
 
-    <label for="">Role:</label>
-    <select name="" id="" v-model="role">
+    <label>Role:</label>
+    <select v-model="role">
       <option value="developer">Web Developer</option>
       <option value="designer">Web Designer</option>
     </select>
 
-    <div class="terms">
-      <input type="checkbox" required v-model="terms" />
-      <label for="">Accpet Terms and Conditions</label>
+    <label>Skills</label>
+    <input type="text" v-model="tempSkill" @keyup.enter="addSkill" />
+    <div v-for="(skill, index) in skills" :key="index" class="pill">
+      {{ skill }}
     </div>
 
-    <div>
-      <input type="checkbox" value="shaun" v-model="names" />
-      <label for="">Shaun</label>
-    </div>
-    <div>
-      <input type="checkbox" value="dave" v-model="names" />
-      <label for="">Dave</label>
-    </div>
-    <div>
-      <input type="checkbox" value="yoshi" v-model="names" />
-      <label for="">Yoshi</label>
+    <div class="terms">
+      <input type="checkbox" required v-model="terms" />
+      <label>Accpet Terms and Conditions</label>
     </div>
   </form>
   <p>Email: {{ email }}</p>
   <p>Password: {{ password }}</p>
   <p>Role: {{ role }}</p>
   <p>Terms: {{ terms }}</p>
-  <p>Names: {{ names }}</p>
 </template>
 
 <script>
@@ -46,8 +38,17 @@ export default {
       password: "",
       role: "",
       terms: false,
-      names: [],
+      tempSkill: "",
+      skills: [],
     };
+  },
+  methods: {
+    addSkill(e) {
+      if (this.tempSkill && !this.skills.includes(this.tempSkill)) {
+        this.skills.push(this.tempSkill);
+        this.tempSkill = "";
+      }
+    },
   },
 };
 </script>
