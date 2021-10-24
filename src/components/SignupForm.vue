@@ -16,11 +16,25 @@
       <input type="checkbox" required v-model="terms" />
       <label for="">Accpet Terms and Conditions</label>
     </div>
+
+    <div>
+      <input type="checkbox" value="shaun" v-model="names" />
+      <label for="">Shaun</label>
+    </div>
+    <div>
+      <input type="checkbox" value="dave" v-model="names" />
+      <label for="">Dave</label>
+    </div>
+    <div>
+      <input type="checkbox" value="yoshi" v-model="names" />
+      <label for="">Yoshi</label>
+    </div>
   </form>
   <p>Email: {{ email }}</p>
   <p>Password: {{ password }}</p>
   <p>Role: {{ role }}</p>
   <p>Terms: {{ terms }}</p>
+  <p>Names: {{ names }}</p>
 </template>
 
 <script>
@@ -32,6 +46,7 @@ export default {
       password: "",
       role: "",
       terms: false,
+      names: [],
     };
   },
 };
